@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0d12">
+  <title>VLR LAB — VALORANT Player Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="scanlines"></div>
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="VLR LAB">
+      <span class="brand-mark">V</span>
+      <span><b>VLR</b> LAB<small>PLAYER LAB</small></span>
+    </a>
+    <button class="mobile-menu" id="mobileMenu" aria-label="Abrir menu">☰</button>
+    <nav id="mainNav">
+      <a href="#inicio">INÍCIO</a>
+      <a href="#jogadores">JOGADORES</a>
+      <a href="#overall">OVERALL</a>
+      <a href="#roleta">ROLETA</a>
+      <a href="#ranking">RANKING</a>
+      <a href="#stats">STATS</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero section-pad">
+      <div class="hero-copy">
+        <div class="eyebrow"><span></span> VALORANT PLAYER LAB</div>
+        <h1>DESCUBRA<br><em>SEU OVERALL.</em></h1>
+        <p>Compare jogadores, analise atributos, monte desafios e deixe a roleta decidir sua próxima partida.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#overall">VER OVERALL <span>→</span></a>
+          <a class="btn ghost" href="#roleta">GIRAR ROLETA <span>↻</span></a>
+        </div>
+        <div class="hero-meta">
+          <div><strong>9</strong><span>PLAYERS</span></div>
+          <div><strong>5</strong><span>MODOS ROLETA</span></div>
+          <div><strong>100%</strong><span>DEMO LOCAL</span></div>
+        </div>
+      </div>
+      <div class="hero-player">
+        <div class="player-glow"></div>
+        <div class="player-card featured">
+          <div class="card-top"><span>FEATURED PLAYER</span><b>01</b></div>
+          <div class="portrait"><span>FX</span></div>
+          <div class="featured-info">
+            <div>
+              <small>DUELISTA</small>
+              <h2>FALLENX</h2>
+              <span class="rank">IMMORTAL 3</span>
+            </div>
+            <div class="big-overall"><span>OVR</span>92</div>
+          </div>
+          <div class="mini-stats"><div><b>91</b><small>AIM</small></div><div><b>88%</b><small>HS</small></div><div><b>1.42</b><small>K/D</small></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="overall" class="section-pad">
+      <div class="section-heading">
+        <div><div class="eyebrow"><span></span> AVALIAÇÃO</div><h2>OVERALL <em>PLAYERS</em></h2></div>
+        <p>Uma pontuação baseada em aim, headshot, K/D e desempenho geral.</p>
+      </div>
+      <div id="overallGrid" class="overall-grid"></div>
+    </section>
+
+    <section id="jogadores" class="section-pad alt">
+      <div class="section-heading">
+        <div><div class="eyebrow"><span></span> DATABASE</div><h2>JOGADORES</h2></div>
+        <div class="search-wrap"><span>⌕</span><input id="playerSearch" type="search" placeholder="Buscar jogador..."></div>
+      </div>
+      <div id="playerGrid" class="player-grid"></div>
+    </section>
+
+    <section id="roleta" class="section-pad roulette-section">
+      <div class="section-heading">
+        <div><div class="eyebrow"><span></span> RANDOMIZER</div><h2>ROLETA <em>LAB</em></h2></div>
+        <p>Sem ideia do que jogar? Deixe o VLR LAB escolher.</p>
+      </div>
+      <div class="roulette-layout">
+        <div class="roulette-box">
+          <div class="wheel-wrap">
+            <div class="pointer"></div>
+            <div id="wheel" class="wheel"><div class="wheel-center">VLR<br><small>LAB</small></div></div>
+          </div>
+          <button id="spinBtn" class="spin-btn">GIRAR ROLETA <span>↻</span></button>
+        </div>
+        <div class="roulette-controls">
+          <label>ESCOLHA A CATEGORIA</label>
+          <div id="categoryButtons" class="category-buttons"></div>
+          <div id="rouletteResult" class="result-card">
+            <small>RESULTADO</small>
+            <strong>?</strong>
+            <span>Gire a roleta para começar.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ranking" class="section-pad alt">
+      <div class="section-heading">
+        <div><div class="eyebrow"><span></span> LEADERBOARD</div><h2>RANKING <em>GERAL</em></h2></div>
+        <p>Os maiores Overalls da database atual.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>#</th><th>PLAYER</th><th>RANK</th><th>OVR</th><th>AIM</th><th>HS%</th><th>K/D</th></tr></thead>
+          <tbody id="rankingBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="stats" class="section-pad">
+      <div class="section-heading">
+        <div><div class="eyebrow"><span></span> DATA CENTER</div><h2>STATS <em>LAB</em></h2></div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-panel"><span>AVG. OVERALL</span><strong id="avgOverall">—</strong><small>entre os jogadores cadastrados</small></div>
+        <div class="stat-panel"><span>MAIOR AIM</span><strong id="bestAim">—</strong><small id="bestAimName">—</small></div>
+        <div class="stat-panel"><span>MAIOR K/D</span><strong id="bestKD">—</strong><small id="bestKDName">—</small></div>
+        <div class="stat-panel"><span>MAIOR HS%</span><strong id="bestHS">—</strong><small id="bestHSName">—</small></div>
+      </div>
+      <div class="compare-panel">
+        <div><span class="eyebrow"><span></span> QUICK COMPARE</span><h3>COMPARE DOIS PLAYERS</h3></div>
+        <div class="compare-selects"><select id="compareA"></select><b>VS</b><select id="compareB"></select></div>
+        <div id="compareResult" class="compare-result"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="brand"><span class="brand-mark">V</span><span><b>VLR</b> LAB<small>PLAYER LAB</small></span></div>
+    <p>Projeto fan-made independente. Dados demonstrativos e fictícios.</p>
+    <span>NOT AFFILIATED WITH RIOT GAMES</span>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
